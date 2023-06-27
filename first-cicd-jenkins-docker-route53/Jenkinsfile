@@ -1,13 +1,13 @@
 pipeline {
     agent any
 environment {
-		DOCKERHUB_CREDENTIALS=credentials('docker')
+		DOCKERHUB_CREDENTIALS=credentials('dockerhubcredintial')
 	}
     stages {
         stage('Clone repository') {
             steps {
                 sh 'rm -rf *'
-               sh "git clone https://github.com/mak-mat/Docker1.git"
+               sh "https://github.com/sadafansaribgmi/Docker1.git"
                
                 //sh "cd cicd-projects"
                
@@ -18,7 +18,7 @@ environment {
             
             steps {
                 sh 'ls -la'
-                sh 'docker build -t makmat/php:v${BUILD_NUMBER} -f Docker1/first-cicd-jenkins-docker-route53/Dockerfile .'
+                sh 'docker build -t sadaf46/php:v${BUILD_NUMBER} -f Docker1/first-cicd-jenkins-docker-route53/Dockerfile .'
             }
         }
 
@@ -47,7 +47,7 @@ else
     done
 fi
 		'''
-                sh 'docker run -d -p 80:80 makmat/php:v${BUILD_NUMBER}'
+                sh 'docker run -d -p 80:80 sadaf46/php:v${BUILD_NUMBER}'
             }
         }
 
